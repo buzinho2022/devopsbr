@@ -1,1 +1,18 @@
-
+name: step-build
+on:
+  workflow_dispatch:
+    ## o mais proximo dos parametros do azuredevops 
+    inputs:
+      solution:
+        description: solution
+        default: 'SemPararEmpresas.CTF.Fachada.API'
+      namespace:
+        description: k8s namespace
+        default: 'spe-corporativo'
+      environment:
+        type: choice
+        description: environment
+        options:
+        - dev
+        - hml
+        - prd
