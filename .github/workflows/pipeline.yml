@@ -1,42 +1,8 @@
-name: step-build
-on:
-  workflow_dispatch:
-    ## o mais proximo dos parametros do azuredevops 
-    inputs:
-      environment:
-        type: choice
-        description: environment
-        options:
-        - dev
-        - hml
-        - prd
-        
-# build app dotnet
+name: hello-world
+on: push
 jobs:
-  deploy_dev:
+  my-job:
     runs-on: Linux
-    if: ${{ github.event.inputs.environment == 'dev' }} 
     steps:
-    - run: |
-        echo  deploy ambiente dev
-        ls -la
-        
-  deploy_hml:
-    runs-on: Linux
-    if: ${{ github.event.inputs.environment == 'hml' }} 
-    steps:
-    - uses: actions/checkout@v2
-      name: checkout repository
-    - run: |
-        echo  deploy ambiente hml
-        ls -la
-        
-  deploy_prd:
-    runs-on: Linux
-    if: ${{ github.event.inputs.environment == 'prd' }} 
-    steps:
-    - uses: actions/checkout@v2
-      name: checkout repository
-    - run: |
-        echo  deploy ambiente prd
-        ls -la      
+      - name: my-step
+        run: echo "Hello World!"
