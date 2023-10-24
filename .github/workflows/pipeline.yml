@@ -13,7 +13,7 @@ on:
 # build app dotnet
 jobs:
   deploy_dev:
-    runs-on: Homolog
+    runs-on: Linux
     if: ${{ github.event.inputs.environment == 'dev' }} 
     steps:
     - uses: actions/checkout@v2
@@ -22,7 +22,7 @@ jobs:
         echo  deploy ambiente dev
         ls -la
   deploy_hml:
-    runs-on: Homolog
+    runs-on: Linux
     if: ${{ github.event.inputs.environment == 'hml' }} 
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
         echo  deploy ambiente hml
         ls -la
   deploy_prd:
-    runs-on: Homolog
+    runs-on: Linux
     if: ${{ github.event.inputs.environment == 'prd' }} 
     steps:
     - uses: actions/checkout@v2
