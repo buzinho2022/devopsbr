@@ -28,11 +28,11 @@ jobs:
                   -H 'Content-Type: application/json' \
                   -d '{
                         "buildId": 1010,
-                        "nomeJob": "poc-github",
+                        "nomeJob": "${{ vars.JOB_NAME }}",
                         "usuario": "rodrigo",
                         "ambiente": "dev",
                         "statusRun": "sucess",
-                        "branch": "${GITHUB_REF##*/}"
+                        "branch": "${{github.ref_name}}"
                       }'
 
 
@@ -50,11 +50,11 @@ jobs:
           -H 'Content-Type: application/json' \
           -d '{
                 "buildId": 1010,
-                "nomeJob": "poc-github",
+                "nomeJob": "${{ vars.JOB_NAME }}",
                 "usuario": "rodrigo",
-                "ambiente": "hml",
+                "ambiente": "dev",
                 "statusRun": "sucess",
-                "branch": "${GITHUB_REF##*/}"
+                "branch": "${{github.ref_name}}"
               }'
         
   deploy_prd:
@@ -71,9 +71,9 @@ jobs:
           -H 'Content-Type: application/json' \
           -d '{
                 "buildId": 1010,
-                "nomeJob": "poc-github",
+                "nomeJob": "${{ vars.JOB_NAME }}",
                 "usuario": "rodrigo",
-                "ambiente": "prd",
+                "ambiente": "dev",
                 "statusRun": "sucess",
-                "branch": "${GITHUB_REF##*/}"
-              }'  
+                "branch": "${{github.ref_name}}"
+              }' 
