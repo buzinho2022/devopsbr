@@ -30,7 +30,7 @@ jobs:
                         "buildId": 1010,
                         "nomeJob": "${{github.workflow}}",
                         "usuario": "${{ github.actor }}",
-                        "ambiente": "dev",
+                        "ambiente": "${{ github.event.inputs.environment }}",
                         "statusRun": "sucess",
                         "branch": "${{github.ref_name}}"
                       }'
@@ -52,7 +52,7 @@ jobs:
                 "buildId": 1010,
                 "nomeJob": "${{github.workflow}}",
                 "usuario": "${{ github.actor }}",
-                "ambiente": "dev",
+                "ambiente": "${{ github.event.inputs.environment }}",
                 "statusRun": "sucess",
                 "branch": "${{github.ref_name}}"
               }'
@@ -73,7 +73,7 @@ jobs:
                 "buildId": 1010,
                 "nomeJob": "${{github.workflow}}",
                 "usuario": "${{ github.actor }}",
-                "ambiente": "dev",
+                "ambiente": "${{ github.event.inputs.environment }}",
                 "statusRun": "sucess",
                 "branch": "${{github.ref_name}}"
               }' 
