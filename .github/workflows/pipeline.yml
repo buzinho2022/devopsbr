@@ -20,7 +20,21 @@ jobs:
       name: checkout repository
     - run: |
         echo  deploy ambiente dev
-        ls -la
+                echo "POST API"
+        echo "POST API"
+        curl -X 'POST' \
+                  'https://localhost:7264/api/Evento' \
+                  -H 'accept: text/plain' \
+                  -H 'Content-Type: application/json' \
+                  -d '{
+                        "buildId": 1010,
+                        "nomeJob": "poc-github",
+                        "usuario": "rodrigo",
+                        "ambiente": "dev",
+                        "statusRun": "sucess",
+                        "branch": "${GITHUB_REF##*/}"
+                      }'
+
 
   deploy_hml:
     runs-on: Linux
@@ -30,7 +44,18 @@ jobs:
       name: checkout repository
     - run: |
         echo  deploy ambiente hml
-        ls -la
+        curl -X 'POST' \
+          'https://localhost:7264/api/Evento' \
+          -H 'accept: text/plain' \
+          -H 'Content-Type: application/json' \
+          -d '{
+                "buildId": 1010,
+                "nomeJob": "poc-github",
+                "usuario": "rodrigo",
+                "ambiente": "hml",
+                "statusRun": "sucess",
+                "branch": "${GITHUB_REF##*/}"
+              }'
         
   deploy_prd:
     runs-on: Linux
@@ -40,4 +65,15 @@ jobs:
       name: checkout repository
     - run: |
         echo  deploy ambiente prd
-        ls -la      
+        curl -X 'POST' \
+          'https://localhost:7264/api/Evento' \
+          -H 'accept: text/plain' \
+          -H 'Content-Type: application/json' \
+          -d '{
+                "buildId": 1010,
+                "nomeJob": "poc-github",
+                "usuario": "rodrigo",
+                "ambiente": "prd",
+                "statusRun": "sucess",
+                "branch": "${GITHUB_REF##*/}"
+              }'  
