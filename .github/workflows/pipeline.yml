@@ -23,7 +23,7 @@ jobs:
                 echo "POST API"
         echo "POST API"
         curl -X 'POST' \
-                  'https://localhost:7264/api/Evento' \
+                  'https://192.168.0.92:32770/api/Evento' \
                   -H 'accept: text/plain' \
                   -H 'Content-Type: application/json' \
                   -d '{
@@ -45,7 +45,7 @@ jobs:
     - run: |
         echo  deploy ambiente hml
         curl -X 'POST' \
-          'https://localhost:7264/api/Evento' \
+          'https://192.168.0.92:32770/api/Evento' \
           -H 'accept: text/plain' \
           -H 'Content-Type: application/json' \
           -d '{
@@ -66,7 +66,7 @@ jobs:
     - run: |
         echo  deploy ambiente prd
         curl -X 'POST' \
-          'https://localhost:7264/api/Evento' \
+          'https://192.168.0.92:32770/api/Evento' \
           -H 'accept: text/plain' \
           -H 'Content-Type: application/json' \
           -d '{
