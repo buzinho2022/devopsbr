@@ -22,7 +22,7 @@ jobs:
         echo  deploy ambiente dev
                 echo "POST API"
         echo "POST API"
-        curl -X 'POST' \
+        curl -k -X 'POST' \
                   'https://192.168.0.92:32770/api/Evento' \
                   -H 'accept: text/plain' \
                   -H 'Content-Type: application/json' \
@@ -44,7 +44,7 @@ jobs:
       name: checkout repository
     - run: |
         echo  deploy ambiente hml
-        curl -X 'POST' \
+        curl -k -X 'POST' \
           'https://192.168.0.92:32770/api/Evento' \
           -H 'accept: text/plain' \
           -H 'Content-Type: application/json' \
@@ -65,7 +65,7 @@ jobs:
       name: checkout repository
     - run: |
         echo  deploy ambiente prd
-        curl -X 'POST' \
+        curl -k -X 'POST' \
           'https://192.168.0.92:32770/api/Evento' \
           -H 'accept: text/plain' \
           -H 'Content-Type: application/json' \
