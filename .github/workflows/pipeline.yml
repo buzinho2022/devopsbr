@@ -1,4 +1,4 @@
-name: step-build
+name: poc-gestao-mudanca
 on:
   workflow_dispatch:
     ## o mais proximo dos parametros do azuredevops 
