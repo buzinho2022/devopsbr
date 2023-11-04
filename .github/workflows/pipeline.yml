@@ -27,7 +27,7 @@ jobs:
                   -H 'accept: text/plain' \
                   -H 'Content-Type: application/json' \
                   -d '{
-                        "buildId": 1010,
+                        "buildId": '${{github.run_number}}',
                         "nomeJob": "${{github.workflow}}",
                         "usuario": "${{ github.actor }}",
                         "ambiente": "${{ github.event.inputs.environment }}",
@@ -49,7 +49,7 @@ jobs:
           -H 'accept: text/plain' \
           -H 'Content-Type: application/json' \
           -d '{
-                "buildId": 1010,
+                "buildId": '${{github.run_number}}',
                 "nomeJob": "${{github.workflow}}",
                 "usuario": "${{ github.actor }}",
                 "ambiente": "${{ github.event.inputs.environment }}",
@@ -70,7 +70,7 @@ jobs:
           -H 'accept: text/plain' \
           -H 'Content-Type: application/json' \
           -d '{
-                "buildId": 1010,
+                "buildId": '${{github.run_number}}',
                 "nomeJob": "${{github.workflow}}",
                 "usuario": "${{ github.actor }}",
                 "ambiente": "${{ github.event.inputs.environment }}",
