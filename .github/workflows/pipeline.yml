@@ -5,7 +5,7 @@ on:
     inputs:
       solution:
         description: solution
-        default: 'SemPararEmpresas.CTF.Fachada.API'
+        default: 'Worker.Service.sln'
       namespace:
         description: k8s namespace
         default: 'spe-corporativo'
