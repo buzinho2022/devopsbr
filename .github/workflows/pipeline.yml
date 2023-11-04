@@ -1,8 +1,14 @@
-name: poc-gestao-mudanca
+name: step-build
 on:
   workflow_dispatch:
     ## o mais proximo dos parametros do azuredevops 
     inputs:
+      solution:
+        description: solution
+        default: 'SemPararEmpresas.CTF.Fachada.API'
+      namespace:
+        description: k8s namespace
+        default: 'spe-corporativo'
       environment:
         type: choice
         description: environment
@@ -10,70 +16,12 @@ on:
         - dev
         - hml
         - prd
-# build app dotnet
-jobs:
-  deploy_dev:
-    runs-on: Linux
-    if: ${{ github.event.inputs.environment == 'dev' }} 
-    steps:
-    - uses: actions/checkout@v2
-      name: checkout repository
-    - run: |
-        echo  deploy ambiente dev
-                echo "POST API"
-        echo "POST API"
-        curl -k -X 'POST' \
-                  'https://192.168.0.91:32768/api/Evento' \
-                  -H 'accept: text/plain' \
-                  -H 'Content-Type: application/json' \
-                  -d '{
-                        "buildId": '${{github.run_number}}',
-                        "nomeJob": "${{github.workflow}}",
-                        "usuario": "${{ github.actor }}",
-                        "ambiente": "${{ github.event.inputs.environment }}",
-                        "statusRun": "sucess",
-                        "branch": "${{github.ref_name}}"
-                      }'
 
-
-  deploy_hml:
-    runs-on: Linux
-    if: ${{ github.event.inputs.environment == 'hml' }} 
-    steps:
-    - uses: actions/checkout@v2
-      name: checkout repository
-    - run: |
-        echo  deploy ambiente hml
-        curl -k -X 'POST' \
-          'https://192.168.0.91:32768/api/Evento' \
-          -H 'accept: text/plain' \
-          -H 'Content-Type: application/json' \
-          -d '{
-                "buildId": '${{github.run_number}}',
-                "nomeJob": "${{github.workflow}}",
-                "usuario": "${{ github.actor }}",
-                "ambiente": "${{ github.event.inputs.environment }}",
-                "statusRun": "sucess",
-                "branch": "${{github.ref_name}}"
-              }'
-        
-  deploy_prd:
-    runs-on: Linux
-    if: ${{ github.event.inputs.environment == 'prd' }} 
-    steps:
-    - uses: actions/checkout@v2
-      name: checkout repository
-    - run: |
-        echo  deploy ambiente prd
-        curl -k -X 'POST' \
-          'https://192.168.0.91:32768/api/Evento' \
-          -H 'accept: text/plain' \
-          -H 'Content-Type: application/json' \
-          -d '{
-                "buildId": '${{github.run_number}}',
-                "nomeJob": "${{github.workflow}}",
-                "usuario": "${{ github.actor }}",
-                "ambiente": "${{ github.event.inputs.environment }}",
-                "statusRun": "sucess",
-                "branch": "${{github.ref_name}}"
-              }' 
+jobs: 
+  call-workflow:
+    secrets: inherit            
+    uses: Buzinho2022/build-templates/.github/workflows/worker-csharp.yml@main
+    with:                       
+      solution: ${{ github.event.inputs.solution }}
+      environment: ${{ github.event.inputs.environment }}
+      namespace: ${{ github.event.inputs.namespace }}
