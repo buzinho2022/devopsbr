@@ -16,6 +16,5 @@ jobs:
     secrets: inherit            
     uses: Buzinho2022/build-templates/.github/workflows/worker-csharp.yml@main
     with:                       
-      solution: ${{ github.event.inputs.solution }}
       environment: ${{ github.event.inputs.environment }}
-      namespace: ${{ github.event.inputs.namespace }}
+
