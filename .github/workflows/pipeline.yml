@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
     ## o mais proximo dos parametros do azuredevops 
     inputs:
+      Gmud:
+        type: string
       environment:
         type: choice
         description: environment
