@@ -1,0 +1,27 @@
+name: pipeline-api
+on:
+  workflow_dispatch:
+    ## o mais proximo dos parametros do azuredevops 
+    inputs:
+      Gmud:
+        type: string
+      environment:
+        type: choice
+        description: environment
+        options:
+        - dev
+        - hml
+        - prd
+      namespace:
+        type: choice
+        description: namespace app
+        options:
+        - bs-poupador
+
+jobs: 
+  call-workflow:
+    secrets: inherit            
+    uses: Buzinho2022/build-templates/.github/workflows/worker-csharp.yml@main
+    with:                       
+      environment: ${{ github.event.inputs.environment }}
+      namespace: "bs-poupador"
